@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Формы</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css" type="text/css">
+        <link href='http://fonts.googleapis.com/css?family=Noto+Sans&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+        <style type="text/css">
+            html{
+                background-image: url("stripe.png"); 
+                background-attachment: fixed;
+                padding-top: 20px;
+                font-size: 62.5%;
+                font-family: 'Noto Sans', sans-serif;
+                
+            }
+            body{
+                background-image: url("stripe2.png");
+                width: 800px;
+                margin: 0 auto;
+                
+            }
+            h1{
+                font-size: 3em;
+                font-weight: bold;
+                border-bottom: 2px dotted black;
+                padding: 5px;
+            }            
+            p{
+                padding: .5em;
+            }            
+            .label {
+                font-size: 2em;
+                display: inline-block;
+                width: 150px;
+                text-align: right;
+            }
+            input[type="text"], textArea{
+                font-size: 2em;
+                border: medium none;
+                width: 250px;
+                border-radius: 5px;  
+                background-color: limegreen;
+                box-shadow:  inset 0px 0px 20px rgba(255, 255, 255, 0.75);
+            }            
+            input[type="text"]:focus, textArea:focus{
+              background-color: white;
+            }
+            input[type="submit"]{
+                margin-left: 150px;
+                padding: 3px;
+                border-radius: 5px;
+                background: #fceabb; /* Old browsers */
+                background: -moz-linear-gradient(top, #fceabb 0%, #fccd4d 50%, #f8b500 51%, #fbdf93 100%); /* FF3.6+ */
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fceabb), color-stop(50%,#fccd4d), color-stop(51%,#f8b500), color-stop(100%,#fbdf93)); /* Chrome,Safari4+ */
+                background: -webkit-linear-gradient(top, #fceabb 0%,#fccd4d 50%,#f8b500 51%,#fbdf93 100%); /* Chrome10+,Safari5.1+ */
+                background: -o-linear-gradient(top, #fceabb 0%,#fccd4d 50%,#f8b500 51%,#fbdf93 100%); /* Opera 11.10+ */
+                background: -ms-linear-gradient(top, #fceabb 0%,#fccd4d 50%,#f8b500 51%,#fbdf93 100%); /* IE10+ */
+                background: linear-gradient(to bottom, #fceabb 0%,#fccd4d 50%,#f8b500 51%,#fbdf93 100%); /* W3C */
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fceabb', endColorstr='#fbdf93',GradientType=0 ); /* IE6-9 */
+            }
+            
+            
+        </style>            
+    </head>
+    <body>
+        <script type="text/javascript">
+            function valid(form)
+            {
+                var err = true;
+                
+                var lname = form.lname.value;
+               
+                var e = lname.match(/[a-zA-Z]+/i); 
+                if(!e){
+                    document.getElementById("lname").style.background="red";
+                    err = false;
+                };
+                
+                var email = form.email.value;                
+                var e = email.match(/^[a-z0-9][a-z0-9\._-]*@[a-z0-9]+\.[a-z0-9]+/i);
+                if(!e){
+                    document.getElementById("email").style.background="red";
+                    err = false;
+                }
+                return err;
+               
+            }
+        </script>
+        <h1>Форма</h1>
+        <form action="http://www.ya.ru" method="get" onsubmit="return valid(this)">
+            <p>
+                <label class="label">Имя</label>
+                <input type="text" name="lname" id="lname" onkeyup ="document.getElementById('lname').style.background='limegreen'">            
+            </p>
+            <p>
+                <label class="label">Фамилия</label>
+                <input type="text">
+            </p>
+            <p>
+                <label class="label">Отчество</label>
+                <input type="text">
+            </p>
+            <p>
+                <label class="label">email</label>
+                <input type="text" name="email" id="email" onkeyup="document.getElementById('email').style.background='limegreen'">
+            </p>
+            <p>
+                <label class="label">Пол</label>
+                <label><input type="radio" name="sex">Муж</label>
+                <label><input type="radio" name="sex">Жен</label>
+            </p>
+            <p>
+                <label class="label">Образование</label>
+                <select>
+                    <option value="1">Среднее</option>
+                    <option value="2">Средне-специальное</option>
+                    <option value="3">Высшее</option>
+                </select>                
+            </p>
+            <p>
+                <label class="label">О себе:</label>
+                <textarea></textarea>
+            </p>    
+            <p>
+                <input type="submit">
+            </p>
+                
+        </form>
+    </body>
+</html>
